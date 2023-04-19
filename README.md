@@ -1,92 +1,250 @@
-# TODO_API
+##  Todo App API with JWT Authentication
+
+This is a RESTful API for a Todo App built using Node.js and Express with JWT (JSON Web Token) authentication. The API allows users to create, read, update, and delete tasks, as well as authenticate and manage their tasks using JWT. The API uses MongoDB as the database to store task information, including task names, descriptions, and statuses.
 
 
 
-## Getting started
+## Requirements
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+1. Implement a RESTful API using Node.js and Express to manage tasks in a Todo App.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+2. Users should be able to create, read, update, and delete tasks using appropriate HTTP methods (POST, GET, PUT, DELETE).
 
-## Add your files
+3. Use MongoDB as the database to store task information, including task names, descriptions, and statuses (e.g., completed, pending).
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+4..Implement JWT authentication using jsonwebtoken.
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/saurabh-dixit1/todo_api.git
-git branch -M main
-git push -uf origin main
-```
+5. Users should be able to register, log in, and receive a JWT upon successful authentication.
 
-## Integrate with your tools
+6. Implement authorization to ensure that only authenticated users can perform CRUD operations on their own tasks.
 
-- [ ] [Set up project integrations](https://gitlab.com/saurabh-dixit1/todo_api/-/settings/integrations)
+## Getting Started
 
-## Collaborate with your team
+Prerequisites
+ > To run this project, you need to have Node.js and MongoDB installed on your machine.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Installing
+1. Clone the repository to your local machine:
 
-## Test and Deploy
+git clone https://github.com/your_username/todo-app-api.git
 
-Use the built-in continuous integration in GitLab.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+2. Install the dependencies:
+ > `npm install`
 
-***
+3. Create a .env file in the root directory of the project and set the following environment variables:
 
-# Editing this README
+MONGO_URI=your_mongo_uri
+JWT_SECRET=your_jwt_secret_key
+SMTP_USER=your_email_user_email
+SMTP_PASS=your_smtp_pass
+SMTP_FROM= your_smtp_from_email
+SMTP_PORT=your_smtp_port
+SMTP_HOST=your_smtp_host
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+Make sure to replace your_jwt_secret_key, your_mongo_uri, and your_email_user_email ,your_smtp_pass, your_smtp_from_email, your_smtp_port, your_smtp_host with your own values.
 
-## Name
-Choose a self-explaining name for your project.
+# Running the project 
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+To run the project, use the following command:
+ >` npm start`
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+> after running this command please visit` http://localhost:5000/`
 
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+# Authentication
+ > The API uses JWT authentication to secure the endpoints. 
+ To authenticate, 
+ send a POST request to the `/api/auth/register`
+endpoint with a JSON body containing the email and password fields:
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+`{
+  "email": "user@example.com",
+  "password": "password"
+}`
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+> Response:
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+`{
+  "token": "your_token_here",
+  "message": "User registered successfully"
+}`
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+ > If the registration is successful, the API will return a JWT token that you can use to authenticate subsequent requests.
 
-## License
-For open source projects, say how it is licensed.
+ >To log in, 
+ send a POST request to the `/api/auth/login` 
+ endpoint with a JSON body containing the same email and password fields:
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+`{
+  "email": "user@example.com",
+  "password": "password"
+}`
+
+> Response:
+`{
+ "message": "User Login successfully"
+  "token": "your_token_here"
+}`
+
+
+ > If the login is successful, the API will return a JWT token that you can use to authenticate subsequent requests.
+
+To authenticate subsequent requests, set the Authorization header to Bearer <TOKEN>, where <TOKEN> is the JWT token returned from the login or registration endpoints.
+
+# CRUD Operations
+
+The API allows users to create, read, update, and delete tasks using the following endpoints:
+
+`-` POST         /api/user/task - Create a new task
+`-` GET          /api/user/task - Get a list of tasks
+`-` GET          /api/user/task/:id - Get a specific task by ID
+`-` PUT          /api/user/task/:id - Update a specific task by ID
+`-` DELETE       /api/user/task/:id - Delete a specific task by ID
+
+
+## Tasks Endpoint Documentation
+
+The tasks endpoint allows users to create, read, update, and delete tasks. Only authenticated users can perform these operations on their own tasks.
+
+Base URL:
+
+`http://localhost:3000/api/user/task`
+
+## Authentication
+
+JWT authentication is used to authenticate users. To authenticate, send a POST request to the login endpoint with the email and password of the user. If the email and password are correct, a JWT will be returned in the response. This JWT should be included in the Authorization header for all requests that require authentication. The format for the Authorization header is as follows:
+
+`Authorization: Bearer <JWT>`
+
+## Task Api 
+
+
+# Create a Task
+
+Request
+`-` Endpoint: POST `/api/user/task `
+Headers:
+Content-Type: application/json
+Authorization: Bearer <TOKEN>
+Body:
+
+`{
+  "name": "Task 1",
+  "description": "This is task 1.",
+  "status": "pending" (not required)
+}`
+
+Response
+Status code: 201 Created
+Body:
+
+`{
+  "_id": "60c0fb2a2d434d8c84e54d28",
+  "name": "Task 1",
+  "description": "This is task 1.",
+  "status": "pending",
+  "user": "60c0f9e12d434d8c84e54d27",
+  "createdAt": "2023-04-19T12:05:38.276Z",
+  "updatedAt": "2023-04-19T12:05:38.276Z"
+}`
+
+
+# Get All Tasks
+
+Request
+`-` Endpoint: GET `/api/user/task`
+Headers:
+Authorization: Bearer <TOKEN>
+Response
+Status code: 200 OK
+Body:
+
+`[
+  {
+    "_id": "60c0fb2a2d434d8c84e54d28",
+    "name": "Task 1",
+    "description": "This is task 1.",
+    "status": "pending",
+    "user": "60c0f9e12d434d8c84e54d27",
+    "createdAt": "2023-04-19T12:05:38.276Z",
+    "updatedAt": "2023-04-19T12:05:38.276Z"
+  },
+  {
+    "_id": "60c0fb772d434d8c84e54d29",
+    "name": "Task 2",
+    "description": "This is task 2.",
+    "status": "completed",
+    "user": "60c0f9e12d434d8c84e54d27",
+    "createdAt": "2023-04-19T12:06:47.089Z",
+    "updatedAt": "2023-04-19T12:07:22.975Z"
+  }
+]`
+
+
+# Get a Task
+
+Request
+`-`Endpoint: GET `/api/user/task/:id`
+Headers:
+Authorization: Bearer <TOKEN>
+Response
+Status code: 200 OK
+Body:
+
+`{
+  "_id": "613afbf82a1a7929bcff72aa",
+  "name": "Finish assignment",
+  "description": "Complete the RESTful API assignment for Todo App.",
+  "status": "pending",
+  "user": "613afbda2a1a7929bcff72a9",
+  "createdAt": "2021-09-09T10:45:28.694Z",
+  "updatedAt": "2021-09-09T10:45:28.694Z",
+  "__v": 0
+}`
+
+
+# Update Task
+
+Request
+`-` Endpoint: PUT `/api/user/task/:id`
+Headers:
+Authorization: Bearer <TOKEN>
+Body:
+
+`{
+"name": "Updated Task Name",
+"description": "Updated Task Description",
+"status": "completed"
+}`
+
+Response
+Status code: 200 OK
+Body:
+
+`{
+"_id": "6142a8768d92d100c4dc1a25",
+"name": "Updated Task Name",
+"description": "Updated Task Description",
+"status": "completed",
+"userId": "613dc650c8e87b0011a05a12",
+"createdAt": "2021-09-16T17:22:46.034Z",
+"updatedAt": "2021-09-16T17:23:07.245Z",
+"__v": 0
+}`
+
+# Delete a Task
+
+Request
+`-` Endpoint: DELETE `/api/user/task/:id`
+Headers:
+Authorization: Bearer <TOKEN>
+Response
+# Status code: 204 No Content
+
+
+# The TODO API devloped By <Saurabh Dixit >
+
