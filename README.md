@@ -26,7 +26,7 @@ Prerequisites
 Installing
 1. Clone the repository to your local machine:
 
-git clone https://github.com/your_username/todo-app-api.git
+git clone https://github.com/Saurabhdixit93/TODO_API
 
 
 2. Install the dependencies:
